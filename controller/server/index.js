@@ -8,8 +8,9 @@ const router = require('../middlewares/router.js');
 
 const PORT = process.env.PORT || 5000;
 
-app.use(require('cors')())
 app.use(router)
+app.use(require('cors')())
+
 
 const server = http.createServer(app);
 const io = socketio(server, {
@@ -19,13 +20,14 @@ const io = socketio(server, {
     }
 });
 
-io.on('connection', (socke) => {
+io.on('connection', (socket) => {
     socket.on('join', ({ nome, sala }, callback) => {
         const { error, user } = addUser({id: socket.id, nome, sala})
+        console.log('User Connected')
 
         if(error) return callback(error)
         socket.join(user.sala)
-        socket.emit('mensagem', {user: 'admin', text: `${user.nome}, bem-vindo á sala: ${user.sala}!`})
+        socket.emit('mensagem', {user: 'admin', text: `Olá ${user.nome}, bem-vindo à sala: ${user.sala}!`})
         
         socket.broadcast.to(user.sala).emit('mensagem', {user: 'admin', text:`${user.nome} entrou.`})
 
@@ -42,9 +44,9 @@ io.on('connection', (socke) => {
 
     socket.on('disconnect', () => {
         const user = removeUser(socket.id)
-        
+        console.log('User Disconnected')
         if (user) {
-            io.to(user.sala).emit('mensagem', {user: 'admin', text: `${user.name} saiu do chat.`})
+            io.to(user.sala).emit('mensagem', {user: 'admin', text: `${user.nome} saiu do chat.`})
         }
     })
 })

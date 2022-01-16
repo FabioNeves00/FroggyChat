@@ -19,10 +19,10 @@ const Join = () => {
                     <h1>Join</h1>
                 </div>
                 <div className="joinInputsContainer">
-                    <input maxLength='12' className="joinInput" type="text" placeholder="Your nickname" onChange={(event) => {
+                    <input className="joinInput" type="text" placeholder="Your nickname" onChange={(event) => {
                         setNome(event.target.value)
                     }} />
-                    <input maxLength='5' className="joinInput" type="text" placeholder="Room ID" onChange={(event) => {
+                    <input className="joinInput" type="text" placeholder="Room ID" onChange={(event) => {
                         setSala(event.target.value)
                     }} />
                 </div>

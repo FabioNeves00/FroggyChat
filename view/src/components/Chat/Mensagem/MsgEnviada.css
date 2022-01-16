@@ -1,0 +1,40 @@
+.msgEnv {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.msgContainer_enviado {
+    max-width: max-content;
+    min-height: 0.3em;
+    background-color: rgba(189, 186, 169, 0.466);
+    margin-right: 1.5em;
+    border: solid rgba(0, 0, 0, 0.15) 0.04em;
+    border-radius: 10px;
+}
+.emissor_enviado {
+    margin-bottom: 0.7em;
+    margin-right: 1.2em;
+    font-style: italic;
+    font-size: 1em;
+    display: flex;
+    justify-content: flex-end;
+    color: rgba(105, 102, 102, 0.514);
+}
+
+.msgBox_enviado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.msgText_enviado {
+    margin:  0 0.8em 1em 0.8em;
+    min-width: 1.2em;
+    max-width: 55ch;
+    min-height: 0.6em;
+    font-size: 1.2em;
+    text-align: justify;
+    word-break: break-word;
+}

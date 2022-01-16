@@ -1,0 +1,19 @@
+.admin_container {
+    width: 100%;
+    margin-top: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msgBox_admin {
+    width: 100%;
+    margin: 0;
+    height: 100%;
+}
+
+.msgText_admin {
+    text-align: center;
+    margin: 0 0 1em 0;
+    color: rgba(126, 120, 120, 0.842);
+}

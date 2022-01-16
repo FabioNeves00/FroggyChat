@@ -37,10 +37,15 @@ label {
     white-space: nowrap;
 }
 
+nav > div {
+    margin: 0
+}
+
 .backContainer {
-    margin-left: 1.5em;
+    margin-left: 1.2em;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .back {
@@ -91,4 +96,8 @@ label {
 
 .logo {
     width: 3.6em;
+}
+
+#nome {
+    max-width: 15ch;
 }

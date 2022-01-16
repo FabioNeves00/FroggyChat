@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import queryString from 'query-string'
 import io from 'socket.io-client'
 
-import Header from '../Header/Header'
+import Header from './Header/Header'
 import Input from './Input/Input';
 import Mensagens from './Mensagens/Mensagens';
 
@@ -21,7 +21,12 @@ const Chat = ({ location }) => {
     const { nome, sala } = queryString.parse(location.search)
 
     document.title = `Sala ${sala}`
-    socket = io(POINTER)
+    
+    socket = io(POINTER, {  
+      cors: {
+      origin: "http://localhost:5000",
+      credentials: true
+    },transports : ['websocket'] });
 
     setNome(nome)
     setSala(sala)
@@ -34,7 +39,7 @@ const Chat = ({ location }) => {
   }, [POINTER, location.search])
 
   useEffect(() => {
-    socket.on('mensagem', (mensagem) => {
+    socket.on('mensagem', mensagem => {
       setMensagens([...mensagens, mensagem])
     })
   }, [mensagens])
@@ -45,6 +50,10 @@ const Chat = ({ location }) => {
       socket.emit('enviarMsg', mensagem, () => setMensagem(''))
     }
   }
+
+  window.onbeforeunload = () => {
+      socket.emit('disconnect')
+  };
 
   return (
     <div id="body">

@@ -12,7 +12,7 @@ const App = () => {
         <Router>
             <Route path="/" exact component={Join}/>  
             <Route path="/chat"  component={Chat} />   
-            <Route path="/secrets"  component={Secret} />   
+            <Route path="/secret"  component={Secret} />
         </Router>   
     );
 }
